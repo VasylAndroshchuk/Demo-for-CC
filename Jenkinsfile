@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-    
+    /*
       stage("Clear k8s resources") {
             steps {
               sh '''#!/bin/bash
@@ -37,7 +37,7 @@ pipeline {
                 
                 }
             }
-        
+        */
 
     
     
