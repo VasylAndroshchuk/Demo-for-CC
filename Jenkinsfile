@@ -28,7 +28,18 @@ pipeline {
                 }
             }
         }
+    
+      stage("Clear k8s resources") {
+            steps {
+              sh '''#!/bin/bash
+                 kubectl delete -f app.yaml
+         '''
+                
+                }
+            }
+        
 
+    
     
     stage('Deploy App') {
       steps {
