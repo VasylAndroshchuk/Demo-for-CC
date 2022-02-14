@@ -1,4 +1,4 @@
-# hellowhale
+# Readme
 Demo of ci/cd process
 you need to have Jenkins with next credentials:
 1) Kubeconfig
