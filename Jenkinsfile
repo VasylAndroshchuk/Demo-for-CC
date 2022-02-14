@@ -44,7 +44,7 @@ pipeline {
     stage('Deploy App') {
       steps {
          sh '''#!/bin/bash
-                 sudo kubectl delete -f app.yaml'''
+                 kubectl delete -f app.yaml'''
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
         }
