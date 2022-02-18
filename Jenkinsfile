@@ -29,7 +29,7 @@ pipeline {
        /*  sh '''#!/bin/bash
                  kubectl delete -f app.yaml''' */
         script {
-          kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
+          kubernetesDeploy(configs: "lamp", kubeconfigId: "mykubeconfig")
         }
       }
     }
