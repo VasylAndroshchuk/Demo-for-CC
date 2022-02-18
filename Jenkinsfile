@@ -31,6 +31,8 @@ pipeline {
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
         }
+        sh '''#!/bin/bash
+                 kubectl apply -f lamp'''
       }
     }
 
