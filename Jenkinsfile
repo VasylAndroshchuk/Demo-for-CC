@@ -26,8 +26,8 @@ pipeline {
     
     stage('Deploy App') {
       steps {
-         sh '''#!/bin/bash
-                 kubectl apply -f lamp''' 
+        /* sh '''#!/bin/bash
+                 kubectl apply -f lamp''' */
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
         }      
