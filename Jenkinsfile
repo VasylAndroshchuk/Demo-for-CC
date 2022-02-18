@@ -26,13 +26,11 @@ pipeline {
     
     stage('Deploy App') {
       steps {
-       /*  sh '''#!/bin/bash
-                 kubectl delete -f app.yaml''' */
+         sh '''#!/bin/bash
+                 kubectl apply -f lamp''' 
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
-        }
-        sh '''#!/bin/bash
-                 kubectl apply -f lamp'''
+        }      
       }
     }
 
