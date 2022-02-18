@@ -22,23 +22,12 @@ pipeline {
                 }
             }
         }
-    /*
-      stage("Clear k8s resources") {
-            steps {
-              sh '''#!/bin/bash
-                 sudo kubectl delete -f app.yaml
-         '''
-                
-                }
-            }
-        */
 
-    
     
     stage('Deploy App') {
       steps {
-         sh '''#!/bin/bash
-                 kubectl delete -f app.yaml'''
+       /*  sh '''#!/bin/bash
+                 kubectl delete -f app.yaml''' */
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
         }
