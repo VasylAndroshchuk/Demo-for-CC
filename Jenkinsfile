@@ -24,8 +24,10 @@ pipeline {
 
     stage('Deploy App') {
       steps {   
-            sh 'kubectl apply -f lamp'
+            withCredentials([kubeconfigContent(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG_CONTENT')]){
+            sh 'kubectl apply -f app.yaml'
             
+          }
         }
       }
     }
