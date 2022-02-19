@@ -4,14 +4,6 @@ pipeline {
 
   stages {
 
-    stage('Checkout Source') {
-      steps{
-        script {
-          checkout scm
-        }
-      }
-    }
-
     stage('Build image') {
       steps{
         script {
@@ -31,13 +23,11 @@ pipeline {
     }
 
     stage('Deploy App') {
-      steps {
-
-        
+      steps {   
             sh 'kubectl apply -f lamp'
             
         }
       }
     }
   }
-}
+
