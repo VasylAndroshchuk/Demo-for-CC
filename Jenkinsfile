@@ -22,10 +22,11 @@ pipeline {
       }
     }
 
-    stage('Deploy App') {
-      steps {   
-            withCredentials([kubeconfigContent(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG_CONTENT')]){
-            sh 'kubectl apply -f app.yaml'
+     stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "hellowhale.yml", kubeconfigId: "mykubeconfig")
+        
             
           }
         }
