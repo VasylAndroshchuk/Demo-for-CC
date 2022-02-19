@@ -15,7 +15,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build("vladsanyuk/ssdevopscc:php-httpd")
+          dockerImage = docker.build("androshchuk/hellowhale:${env.BUILD_ID}")
         }
       }
     }
@@ -23,8 +23,8 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-            dockerImage.push()
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            dockerImage.push("latest")
           }
         }
       }
@@ -33,7 +33,7 @@ pipeline {
     stage('Deploy App') {
       steps {
 
-          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
+          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'mykubeconfig')]) {
             sh 'kubectl apply -f app.yaml'
             
         }
