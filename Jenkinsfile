@@ -4,33 +4,35 @@ pipeline {
 
   stages {
 
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build("androshchuk/hellowhale:${env.BUILD_ID}")
+    
+      stage("Build image") {
+            steps {
+                script {
+                    myapp = docker.build("androshchuk/hellowhale:${env.BUILD_ID}")
+                }
+            }
         }
-      }
-    }
-
-    stage('Push Image') {
-      steps{
-        script {
-          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            dockerImage.push("latest")
-          }
+    
+      stage("Push image") {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            myapp.push("latest")
+                            myapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
         }
-      }
-    }
 
-     stage('Deploy App') {
+    
+    stage('Deploy App') {
       steps {
         script {
           kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
-        
-            
-          }
         }
       }
     }
+
   }
 
+}
