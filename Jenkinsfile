@@ -33,8 +33,8 @@ pipeline {
     stage('Deploy App') {
       steps {
 
-          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'mykubeconfig')]) {
-            sh 'kubectl apply -f app.yaml'
+        //  withCredentials([file(credentialsId: 'mykubeconfig', variable: 'mykubeconfig')]) {
+            sh 'kubectl apply -f lamp'
             
         }
       }
