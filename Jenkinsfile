@@ -24,14 +24,18 @@ pipeline {
             }
         }
 
-    
-    stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "app.yaml", kubeconfigId: "mykubeconfig")
+            stage('Hello') {
+            steps {
+                withAWS(credentials: 'AWS_CRED') {
+     sh "kubectl cluster-info"
+     sh "kubectl get nodes"
+     sh "pwd"
+}
+            
+            }
         }
-      }
-    }
+    
+    
 
   }
 
