@@ -28,7 +28,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'AWS_CRED') {
      sh "kubectl apply -f lamp"
-     sh "kubectl apply app.yaml"
+     sh "kubectl apply -f app.yaml"
     
 }
             
