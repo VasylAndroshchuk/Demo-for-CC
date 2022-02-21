@@ -24,12 +24,12 @@ pipeline {
             }
         }
 
-            stage('Hello') {
+            stage('Deploy') {
             steps {
                 withAWS(credentials: 'AWS_CRED') {
-     sh "kubectl cluster-info"
-     sh "kubectl get nodes"
-     sh "pwd"
+     sh "kubectl apply -f lamp"
+     sh "kubectl apply app.yaml"
+    
 }
             
             }
