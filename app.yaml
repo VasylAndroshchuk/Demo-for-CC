@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: hello-whale-container
-        image: androshchuk/hellowhale:${env.BUILD_ID}
+        image: androshchuk/hellowhale:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
