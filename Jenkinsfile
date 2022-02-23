@@ -26,6 +26,7 @@ pipeline {
             stage('Deploy') {
             steps {
                 withAWS(credentials: 'AWS_CRED') {
+     sh "sed -ie "s/THIS_STRING_IS_REPLACED_DURING_BUILD/$(date)/g" app.yml"
      sh "kubectl apply -f lamp"
      sh "kubectl apply -f app.yaml"
     
