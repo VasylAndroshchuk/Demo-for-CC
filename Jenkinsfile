@@ -26,9 +26,7 @@ pipeline {
             stage('Deploy') {
             steps {
                 withAWS(credentials: 'AWS_CRED') {
-     sh "kubectl patch deployment web -p \
-  "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}""
-
+     
      sh "kubectl apply -f lamp"
      sh "kubectl apply -f app.yaml"
     
