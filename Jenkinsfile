@@ -9,6 +9,7 @@ pipeline {
             steps {
                 script {
                     myapp = docker.build("androshchuk/hellowhale:latest")
+                  telegramSend 'Hello World'
                 }
             }
         }
@@ -29,7 +30,7 @@ pipeline {
      
      sh "kubectl apply -f lamp"
      sh "kubectl apply -f app.yaml"
-    
+     
 }
             
             }
