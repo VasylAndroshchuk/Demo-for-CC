@@ -8,8 +8,7 @@ pipeline {
       stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("androshchuk/hellowhale:latest")
-                  telegramSend 'Hello World'
+                    myapp = docker.build("androshchuk/hellowhale:latest")              
                 }
             }
         }
